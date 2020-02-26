@@ -1,0 +1,89 @@
+﻿<div ng-controller="EnvironmentDashboardController as vm">
+
+	<umb-load-indicator ng-if="vm.dashboard.loading"></umb-load-indicator>
+
+	<umb-box>
+
+		<umb-box-content>
+
+			<h3 class="bold">
+				Environment Dashboard
+			</h3>
+
+			<ul>
+				<li>
+					You are viewing: <strong>{{vm.dashboard.info.currentEnvironment}}</strong>
+				</li>
+			</ul>
+
+		</umb-box-content>
+
+	</umb-box>
+
+	<umb-box>
+
+		<umb-box-content>
+
+			<h5>
+				You are connected to the following database
+			</h5>
+
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>
+							Server
+						</td>
+						<td>
+							{{vm.dashboard.info.databaseServer}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Name
+						</td>
+						<td>
+							{{vm.dashboard.info.databaseName}}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</umb-box-content>
+
+	</umb-box>
+
+	<umb-box>
+
+		<umb-box-content>
+			
+			<h5>
+				You are connected to the following cloud storage
+			</h5>
+
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>
+							Url
+						</td>
+						<td>
+							{{vm.dashboard.info.cloudStorageUrl}}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Account Name
+						</td>
+						<td>
+							{{vm.dashboard.info.cloudStorageAccountName}}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</umb-box-content>
+
+	</umb-box>
+
+</div>

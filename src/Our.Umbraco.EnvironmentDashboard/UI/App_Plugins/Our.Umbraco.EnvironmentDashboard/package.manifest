@@ -1,0 +1,16 @@
+﻿{
+	"javascript": [
+		"/App_Plugins/Our.Umbraco.EnvironmentDashboard/backoffice/app.controller.js",
+		"/App_Plugins/Our.Umbraco.EnvironmentDashboard/backoffice/app.resources.js"
+	],
+	"css": [],
+	"dashboards": [
+		{
+			"alias": "Our.Umbraco.EnvironmentDashboard",
+			"name": "Our.Umbraco.EnvironmentDashboard",
+			"view": "/App_Plugins/Our.Umbraco.EnvironmentDashboard/backoffice/app.html",
+			"sections": [ "content" ],
+			"weight": -10
+		}
+	]
+}
