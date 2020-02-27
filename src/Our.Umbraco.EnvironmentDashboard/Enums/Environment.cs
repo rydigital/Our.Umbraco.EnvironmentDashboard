@@ -1,6 +1,6 @@
-﻿using Application.Features.EnvironmentDashboard.Attributes;
+﻿using Our.Umbraco.EnvironmentDashboard.Attributes;
 
-namespace Application.Features.EnvironmentDashboard.Enums
+namespace Our.Umbraco.EnvironmentDashboard.Enums
 {
 	public enum Environment
 	{

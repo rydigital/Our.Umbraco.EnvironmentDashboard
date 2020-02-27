@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="Attributes\EnvironmentMatchAttribute.cs" />
     <Compile Include="Builders\EnvironmentInfoBuilder.cs" />
-    <Compile Include="Components\EnvironmentDashboard.cs" />
     <Compile Include="Components\RemoveDashboardComposer.cs" />
     <Compile Include="Components\ServerVariablesComposer.cs" />
     <Compile Include="Controllers\EnvironmentDashboardController.cs" />

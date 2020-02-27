@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using Application.Features.EnvironmentDashboard.Attributes;
+using Our.Umbraco.EnvironmentDashboard.Attributes;
 using Umbraco.Core;
-using Environment = Application.Features.EnvironmentDashboard.Enums.Environment;
+using Environment = Our.Umbraco.EnvironmentDashboard.Enums.Environment;
 
-namespace Application.Features.EnvironmentDashboard.Helpers
+namespace Our.Umbraco.EnvironmentDashboard.Helpers
 {
 	public static class EnvironmentHelper
 	{

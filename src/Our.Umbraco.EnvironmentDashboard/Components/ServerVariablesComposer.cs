@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Web;
-using Application.Features.EnvironmentDashboard.Helpers;
+using Our.Umbraco.EnvironmentDashboard.Helpers;
 using Umbraco.Core.Composing;
 using Umbraco.Web.JavaScript;
 
-namespace Application.Features.EnvironmentDashboard.Components
+namespace Our.Umbraco.EnvironmentDashboard.Components
 {
 	public class ServerVariablesComposer : IUserComposer
 	{

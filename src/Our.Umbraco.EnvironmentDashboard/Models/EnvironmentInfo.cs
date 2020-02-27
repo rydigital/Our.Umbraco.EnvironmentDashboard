@@ -1,8 +1,8 @@
-﻿using Application.Features.EnvironmentDashboard.Enums;
+﻿using Our.Umbraco.EnvironmentDashboard.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Application.Features.EnvironmentDashboard.Models
+namespace Our.Umbraco.EnvironmentDashboard.Models
 {
 	public class EnvironmentInfo
 	{

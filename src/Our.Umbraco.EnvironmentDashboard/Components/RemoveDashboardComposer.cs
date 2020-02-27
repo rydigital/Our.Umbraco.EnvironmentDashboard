@@ -2,7 +2,7 @@
 using Umbraco.Web;
 using Umbraco.Web.Dashboards;
 
-namespace Application.Features.EnvironmentDashboard.Components
+namespace Our.Umbraco.EnvironmentDashboard.Components
 {
 	public class RemoveDashboardComposer : IUserComposer
 	{

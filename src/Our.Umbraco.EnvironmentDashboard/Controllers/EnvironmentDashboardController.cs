@@ -1,10 +1,10 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Application.Features.EnvironmentDashboard.Builders;
+using Our.Umbraco.EnvironmentDashboard.Builders;
 using Umbraco.Web.WebApi;
 
-namespace Application.Features.EnvironmentDashboard.Controllers
+namespace Our.Umbraco.EnvironmentDashboard.Controllers
 {
 	public class EnvironmentDashboardController : UmbracoAuthorizedApiController
 	{

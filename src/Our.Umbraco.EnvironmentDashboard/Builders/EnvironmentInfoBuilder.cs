@@ -1,39 +1,82 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Web;
-using Application.Features.EnvironmentDashboard.Helpers;
-using Application.Features.EnvironmentDashboard.Models;
+using Our.Umbraco.EnvironmentDashboard.Helpers;
+using Our.Umbraco.EnvironmentDashboard.Models;
 using Microsoft.WindowsAzure.Storage;
 
-namespace Application.Features.EnvironmentDashboard.Builders
+namespace Our.Umbraco.EnvironmentDashboard.Builders
 {
 	public static class EnvironmentInfoBuilder
 	{
 		public static EnvironmentInfo Create()
 		{
-			var connectionString = GetDatabaseConnectionString();
-			var cloudStorageInfo = GetCloudStorageAccount();
-
 			return new EnvironmentInfo
 			{
 				CurrentEnvironment = EnvironmentHelper.GetCurrentEnvironmentFromString(HttpContext.Current.Request.Url.AbsoluteUri),
-				DatabaseName = connectionString.InitialCatalog,
-				DatabaseServer = connectionString.DataSource,
-				CloudStorageUrl = cloudStorageInfo.BlobStorageUri.PrimaryUri.AbsoluteUri,
-				CloudStorageAccountName = cloudStorageInfo.Credentials.AccountName
+				DatabaseName = GetDatabaseName(),
+				DatabaseServer = GetDatabaseServer(),
+				CloudStorageUrl = GetAzureStorageUrl(),
+				CloudStorageAccountName = GetAzureStorageAccountName()
 			};
 		}
 
-		private static CloudStorageAccount GetCloudStorageAccount()
+		private static string GetAzureStorageUrl()
 		{
 			var cloudConnectionString = ConfigurationManager.AppSettings["AzureBlobFileSystem.ConnectionString:media"];
-			return CloudStorageAccount.Parse(cloudConnectionString);
+
+			try
+			{
+				var cloudStorageInfo= CloudStorageAccount.Parse(cloudConnectionString);
+
+				return cloudStorageInfo.BlobStorageUri.PrimaryUri.AbsoluteUri;
+			}
+			catch
+			{
+				return string.Empty;
+			}
 		}
 
-		private static SqlConnectionStringBuilder GetDatabaseConnectionString()
+
+		private static string GetAzureStorageAccountName()
 		{
-			var umbracoConnectionString = ConfigurationManager.ConnectionStrings["umbracoDbDSN"].ConnectionString;
-			return new SqlConnectionStringBuilder(umbracoConnectionString);
+			var cloudConnectionString = ConfigurationManager.AppSettings["AzureBlobFileSystem.ConnectionString:media"];
+
+			try
+			{
+				var cloudStorageInfo = CloudStorageAccount.Parse(cloudConnectionString);
+
+				return cloudStorageInfo.Credentials.AccountName;
+			}
+			catch
+			{
+				return string.Empty;
+			}
+		}
+
+
+		private static string GetDatabaseServer()
+		{
+			var connectionString = ConfigurationManager.ConnectionStrings["umbracoDbDSN"].ConnectionString;
+
+			if (connectionString.Contains(".sdf"))
+			{
+				return connectionString;
+			}
+
+			return new SqlConnectionStringBuilder(connectionString).DataSource;
+		}
+
+		private static string GetDatabaseName()
+		{
+			var connectionString = ConfigurationManager.ConnectionStrings["umbracoDbDSN"].ConnectionString;
+			if (connectionString.Contains(".sdf"))
+			{
+				return connectionString;
+			}
+
+			return new SqlConnectionStringBuilder(connectionString).InitialCatalog;
 		}
 	}
 }

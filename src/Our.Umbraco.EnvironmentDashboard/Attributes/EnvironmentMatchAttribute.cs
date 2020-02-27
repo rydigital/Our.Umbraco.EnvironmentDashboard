@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Application.Features.EnvironmentDashboard.Attributes
+namespace Our.Umbraco.EnvironmentDashboard.Attributes
 {
 	public class EnvironmentMatchAttribute : Attribute
 	{

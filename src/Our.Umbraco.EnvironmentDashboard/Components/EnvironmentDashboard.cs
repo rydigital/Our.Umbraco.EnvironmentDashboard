@@ -1,7 +1,7 @@
 ﻿using Umbraco.Core.Composing;
 using Umbraco.Core.Dashboards;
 
-namespace Application.Features.EnvironmentDashboard.Components
+namespace Our.Umbraco.EnvironmentDashboard.Components
 {
 	[Weight(10)]
 	public class EnvironmentDashboard : IDashboard
