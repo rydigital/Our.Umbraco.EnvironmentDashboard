@@ -1,4 +1,6 @@
 ﻿using Our.Umbraco.EnvironmentDashboard.Models;
+using System.Configuration;
+using System.Data.SqlClient;
 using Umbraco.Core;
 using Umbraco.Core.Composing;
 
@@ -16,21 +18,32 @@ namespace Our.Umbraco.EnvironmentDashboard.Components
 	{
 		public void Initialize()
 		{
-			// TODO: add connection string
-			var databaseGroup = new InfoGroup("Database Settings");
-			databaseGroup.Pairs.Add(new InfoPair("Server", "server value"));
-			databaseGroup.Pairs.Add(new InfoPair("Database Name", "database name value"));
-			EnvironmentInfo.Instance.Groups.Add(databaseGroup);
-
-
-			// TODO: add connection azure storage
-			var blobGroup = new InfoGroup("Blob Settings");
-			blobGroup.Pairs.Add(new InfoPair("blobkey", "blobvalue"));
-			EnvironmentInfo.Instance.Groups.Add(blobGroup);
+			var infoGroup = GetDatabaseServerConfig();
+			EnvironmentInfo.Instance.Groups.Add(infoGroup);
 		}
 
 		public void Terminate()
 		{
+		}
+
+		private static InfoGroup GetDatabaseServerConfig()
+		{
+			var infoGroup = new InfoGroup("Database Settings");
+			var connectionString = ConfigurationManager.ConnectionStrings["umbracoDbDSN"].ConnectionString;
+
+			if (connectionString.Contains(".sdf"))
+			{
+				infoGroup.Pairs.Add(new InfoPair("SQL CE", connectionString));
+			}
+			else
+			{
+				var datbaseServer = new SqlConnectionStringBuilder(connectionString).DataSource;
+				var databaseName = new SqlConnectionStringBuilder(connectionString).InitialCatalog;
+				infoGroup.Pairs.Add(new InfoPair("Server", datbaseServer));
+				infoGroup.Pairs.Add(new InfoPair("Database Name", databaseName));
+			}
+
+			return infoGroup;
 		}
 	}
 }
