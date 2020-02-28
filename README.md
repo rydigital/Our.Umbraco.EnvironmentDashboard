@@ -8,6 +8,10 @@ A simple dashboard for displaying environment specific information.
 - Ability to register any environment specific information to be displayed
 - Browser tab shows environment
 
+![Dashboard][DashboardImage]
+![Browser Tab][BrowserTabImage]
+
+
 Suggested details to display:
 - Azure Search index
 - Azure Storage Account
@@ -16,7 +20,7 @@ Suggested details to display:
 ## Getting Started ##
 Nuget Package: ` Install-Package Our.Umbraco.EnvironmentDashboard `
 
-## Usage ##
+## Configuration ##
 #### Composer ####
 ```
 public class MyDemoComposer : IUserComposer
@@ -50,6 +54,15 @@ public class MyDemoComponent : IComponent
 	public void Terminate() { }
 }
 ```
+
+
+
+[DashboardImage]: assets/dashboard.png  "Dashboard"
+[BrowserTabImage]: assets/browsertab.png  "BrowserTab"
+
+
+
+
 
 
 
