@@ -1,5 +1,4 @@
-﻿using Our.Umbraco.EnvironmentDashboard.Components;
-using Our.Umbraco.EnvironmentDashboard.Models;
+﻿using Our.Umbraco.EnvironmentDashboard.Models;
 using Umbraco.Core;
 using Umbraco.Core.Composing;
 
@@ -19,14 +18,15 @@ namespace Application.Demo.Start_Up
 		{
 			// Register as many environments as you wish
 			EnvironmentInfo.Instance.Domains.Add(new DomainInfo("Local", "environmentdashboard.localhost"));
-			EnvironmentInfo.Instance.Domains.Add(new DomainInfo("Development", "environmentdashboard-dev.localhost"));
-			EnvironmentInfo.Instance.Domains.Add(new DomainInfo("QA", "environmentdashboard-qa.localhost"));
-			EnvironmentInfo.Instance.Domains.Add(new DomainInfo("UAT", "environmentdashboard-qa.localhost"));
-			EnvironmentInfo.Instance.Domains.Add(new DomainInfo("Production", "environmentdashboard-prod.localhost"));
+			EnvironmentInfo.Instance.Domains.Add(new DomainInfo("Development", "environmentdashboard-dev.ry.com"));
+			EnvironmentInfo.Instance.Domains.Add(new DomainInfo("QA", "environmentdashboard-qa.ry.com"));
+			EnvironmentInfo.Instance.Domains.Add(new DomainInfo("UAT", "environmentdashboard-uat.ry.com"));
+			EnvironmentInfo.Instance.Domains.Add(new DomainInfo("Production", "environmentdashboard.ry.com"));
 
 			// Register my custom groups
-			var group = new InfoGroup("My Custom Group Title");
-			group.Pairs.Add(new InfoPair("my key", "my value"));
+			var group = new InfoGroup("My Custom Group");
+			group.Pairs.Add(new InfoPair("My key", "My value"));
+
 			EnvironmentInfo.Instance.Groups.Add(group);
 		}
 
