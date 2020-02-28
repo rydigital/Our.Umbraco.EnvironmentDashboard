@@ -24,6 +24,7 @@
 			environmentDashboardResources.getEnvironmentDashboardInfo().then(function (response)
 			{
 				vm.dashboard.loading = false;
+				console.log(response);
 				angular.copy(response, vm.dashboard.info);
 			});
 		}

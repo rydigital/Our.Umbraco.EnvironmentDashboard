@@ -44,14 +44,14 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Attributes\EnvironmentMatchAttribute.cs" />
-    <Compile Include="Builders\EnvironmentInfoBuilder.cs" />
-    <Compile Include="Components\RemoveDashboardComposer.cs" />
+    <Compile Include="Components\EnvironmentDashboardComposer.cs" />
     <Compile Include="Components\ServerVariablesComposer.cs" />
     <Compile Include="Controllers\EnvironmentDashboardController.cs" />
-    <Compile Include="Enums\Environment.cs" />
     <Compile Include="Helpers\EnvironmentHelper.cs" />
+    <Compile Include="Models\DomainInfo.cs" />
     <Compile Include="Models\EnvironmentInfo.cs" />
+    <Compile Include="Models\InfoGroup.cs" />
+    <Compile Include="Models\InfoPair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -521,6 +521,7 @@
       <HintPath>..\packages\UmbracoCms.Web.8.1.5\lib\net472\Umbraco.Web.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>robocopy "$(ProjectDir)UI/App_Plugins" "$(SolutionDir)../samples/Application.Demo/App_Plugins" /s 

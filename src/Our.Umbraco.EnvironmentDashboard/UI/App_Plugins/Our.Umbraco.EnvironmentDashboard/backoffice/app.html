@@ -1,89 +1,36 @@
 ﻿<div ng-controller="EnvironmentDashboardController as vm">
-
 	<umb-load-indicator ng-if="vm.dashboard.loading"></umb-load-indicator>
-
 	<umb-box>
-
 		<umb-box-content>
-
 			<h3 class="bold">
 				Environment Dashboard
 			</h3>
-
 			<ul>
 				<li>
 					You are viewing: <strong>{{vm.dashboard.info.currentEnvironment}}</strong>
 				</li>
 			</ul>
-
 		</umb-box-content>
-
 	</umb-box>
 
-	<umb-box>
-
+	<umb-box ng-repeat="group in vm.dashboard.info.groups">
 		<umb-box-content>
-
 			<h5>
-				You are connected to the following database
+				{{group.title}}
 			</h5>
-
 			<table class="table">
 				<tbody>
-					<tr>
+					<tr ng-repeat="pair in group.pairs">
 						<td>
-							Server
+							{{pair.key}}
 						</td>
 						<td>
-							{{vm.dashboard.info.databaseServer}}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Name
-						</td>
-						<td>
-							{{vm.dashboard.info.databaseName}}
+							{{pair.value}}
 						</td>
 					</tr>
+
 				</tbody>
 			</table>
-
 		</umb-box-content>
-
 	</umb-box>
-
-	<umb-box>
-
-		<umb-box-content>
-			
-			<h5>
-				You are connected to the following cloud storage
-			</h5>
-
-			<table class="table">
-				<tbody>
-					<tr>
-						<td>
-							Url
-						</td>
-						<td>
-							{{vm.dashboard.info.cloudStorageUrl}}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Account Name
-						</td>
-						<td>
-							{{vm.dashboard.info.cloudStorageAccountName}}
-						</td>
-					</tr>
-				</tbody>
-			</table>
-
-		</umb-box-content>
-
-	</umb-box>
-
 </div>
