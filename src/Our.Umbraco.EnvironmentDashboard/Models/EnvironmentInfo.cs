@@ -1,11 +1,11 @@
-﻿using Application.Features.EnvironmentDashboard.Helpers;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using Our.Umbraco.EnvironmentDashboard.Helpers;
 
 namespace Our.Umbraco.EnvironmentDashboard.Models
 {
-	public sealed class EnvironmentInfo
+	public class EnvironmentInfo
 	{
 		private static readonly Lazy<EnvironmentInfo>
 			lazy =
@@ -14,7 +14,7 @@ namespace Our.Umbraco.EnvironmentDashboard.Models
 
 		public static EnvironmentInfo Instance { get { return lazy.Value; } }
 
-		private EnvironmentInfo()
+		public EnvironmentInfo()
 		{
 			Groups = new List<InfoGroup>();
 			Domains = new List<DomainInfo>();
@@ -34,7 +34,7 @@ namespace Our.Umbraco.EnvironmentDashboard.Models
 		public List<DomainInfo> Domains { get; set; }
 
 		[JsonProperty("currentEnvironment")]
-		public string CurrentEnvironment { get; private set; }
+		public string CurrentEnvironment { get; set; }
 
 		[JsonProperty("groups")]
 		public List<InfoGroup> Groups { get; set; }

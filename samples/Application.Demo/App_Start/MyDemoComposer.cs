@@ -1,37 +1,26 @@
-﻿using Our.Umbraco.EnvironmentDashboard.Models;
-using Umbraco.Core;
+﻿using System.Collections.Generic;
+using Our.Umbraco.EnvironmentDashboard;
+using Our.Umbraco.EnvironmentDashboard.Components;
+using Our.Umbraco.EnvironmentDashboard.Groups;
 using Umbraco.Core.Composing;
 
-namespace Application.Demo.Start_Up
+namespace Application.Demo
 {
 	public class MyDemoComposer : IUserComposer
 	{
 		public void Compose(Composition composition)
 		{
-			composition.Components().Append<MyDemoComponent>();
-		}
-	}
+			composition.AddEnvironmentDashboard(new Dictionary<DashboardEnvironment, IEnumerable<string>>
+			            {
+				            {new DashboardEnvironment("Local"), new[] {"localhost:21801"}},
+				            {new DashboardEnvironment("Development"), new[] {"environmentdashboard-dev.ry.com"}},
+				            {new DashboardEnvironment("QA"), new[] {"environmentdashboard-qa.ry.com"}},
+				            {new DashboardEnvironment("UAT"), new[] {"environmentdashboard-uat.ry.com"}},
+				            {new DashboardEnvironment("Production"), new[] {"environmentdashboard.ry.com"}},
+			            })
+			           .Append<UptimeDashboardGroupsProvider>()
+			           .Append<DatabaseServerGroupsProvider>();
 
-	public class MyDemoComponent : IComponent
-	{
-		public void Initialize()
-		{
-			// Register as many environments as you wish
-			EnvironmentInfo.Instance.Domains.Add(new DomainInfo("Local", "environmentdashboard.localhost"));
-			EnvironmentInfo.Instance.Domains.Add(new DomainInfo("Development", "environmentdashboard-dev.ry.com"));
-			EnvironmentInfo.Instance.Domains.Add(new DomainInfo("QA", "environmentdashboard-qa.ry.com"));
-			EnvironmentInfo.Instance.Domains.Add(new DomainInfo("UAT", "environmentdashboard-uat.ry.com"));
-			EnvironmentInfo.Instance.Domains.Add(new DomainInfo("Production", "environmentdashboard.ry.com"));
-
-			// Register my custom groups
-			var group = new InfoGroup("My Custom Group");
-			group.Pairs.Add(new InfoPair("My key", "My value"));
-
-			EnvironmentInfo.Instance.Groups.Add(group);
-		}
-
-		public void Terminate()
-		{
 		}
 	}
 }

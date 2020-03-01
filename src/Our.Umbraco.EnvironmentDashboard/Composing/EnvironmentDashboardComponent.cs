@@ -1,19 +1,10 @@
-﻿using Our.Umbraco.EnvironmentDashboard.Models;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data.SqlClient;
-using Umbraco.Core;
+using Our.Umbraco.EnvironmentDashboard.Models;
 using Umbraco.Core.Composing;
 
-namespace Our.Umbraco.EnvironmentDashboard.Components
+namespace Our.Umbraco.EnvironmentDashboard.Composing
 {
-	public class EnvironmentDashboardComposer : IUserComposer
-	{
-		public void Compose(Composition composition)
-		{
-			composition.Components().Insert<EnvironmentDashboardComponent>();
-		}
-	}
-
 	public class EnvironmentDashboardComponent : IComponent
 	{
 		public void Initialize()

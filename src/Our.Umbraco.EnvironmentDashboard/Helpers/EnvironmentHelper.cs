@@ -1,7 +1,7 @@
-﻿using Our.Umbraco.EnvironmentDashboard.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Our.Umbraco.EnvironmentDashboard.Models;
 
-namespace Application.Features.EnvironmentDashboard.Helpers
+namespace Our.Umbraco.EnvironmentDashboard.Helpers
 {
 	public class EnvironmentHelper
     {
