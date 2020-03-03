@@ -1,5 +1,5 @@
 ﻿<div ng-controller="EnvironmentDashboardController as vm">
-	<umb-load-indicator ng-if="vm.dashboard.loading"></umb-load-indicator>
+	<umb-load-indicator ng-if="vm.model.loading"></umb-load-indicator>
 	<umb-box>
 		<umb-box-content>
 			<h3 class="bold">
@@ -7,13 +7,13 @@
 			</h3>
 			<ul>
 				<li>
-					You are viewing: <strong>{{vm.dashboard.info.currentEnvironment}}</strong>
+					You are viewing: <strong>{{vm.model.dashboard.currentEnvironment}}</strong>
 				</li>
 			</ul>
 		</umb-box-content>
 	</umb-box>
 
-	<umb-box ng-repeat="group in vm.dashboard.info.groups">
+	<umb-box ng-repeat="group in vm.model.dashboard.groups">
 		<umb-box-content>
 			<h5>
 				{{group.title}}
@@ -28,8 +28,7 @@
 							{{pair.value}}
 						</td>
 					</tr>
-
-				</tbody>
+                </tbody>
 			</table>
 		</umb-box-content>
 	</umb-box>

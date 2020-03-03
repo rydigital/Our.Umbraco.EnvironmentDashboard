@@ -5,27 +5,24 @@
 	{
 		var vm = this;
 
-		vm.dashboard = {
+		vm.model = {
 			loading: false,
-			info: {
+			dashboard: {
 				currentEnvironment: '',
-				databaseServer: '',
-				databaseName: '',
-				cloudStorageUrl: '',
-				cloudStorageAccountName: ''
+				groups: []
 			}
 		};
 
 		function init()
 		{
-			vm.dashboard.loading = true;
+			vm.model.loading = true;
 
 			//get data from api
 			environmentDashboardResources.getEnvironmentDashboardInfo().then(function (response)
 			{
-				vm.dashboard.loading = false;
+				vm.model.loading = false;
 				console.log(response);
-				angular.copy(response, vm.dashboard.info);
+				angular.copy(response, vm.model.dashboard);
 			});
 		}
 
