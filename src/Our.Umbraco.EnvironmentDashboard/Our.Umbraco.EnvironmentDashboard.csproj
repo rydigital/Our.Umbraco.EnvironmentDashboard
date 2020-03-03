@@ -527,7 +527,7 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>robocopy "$(ProjectDir)UI/App_Plugins" "$(SolutionDir)../samples/Application.Demo/App_Plugins" /s 
+    <PostBuildEvent>robocopy "$(ProjectDir)UI/App_Plugins" "$(ProjectDir)../../samples/Application.Demo/App_Plugins" /s 
 if %25errorlevel%25 LEQ 8 exit 0</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets" Condition="Exists('..\..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" />
