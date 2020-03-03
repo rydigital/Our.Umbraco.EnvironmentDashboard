@@ -28,14 +28,14 @@ public class MyDemoComposer : IUserComposer
 	public void Compose(Composition composition)
 	{
 		composition.AddEnvironmentDashboard(environments =>
-			{
-				environments
-					.AddEnvironment("Local", "environmentdashboard.localhost")
-					.AddEnvironment("Dev", "environmentdashboard-dev.azurewebsites.net")
-					.AddEnvironment("QA", "environmentdashboard-qa.azurewebsites.net")
-                    .AddEnvironment("UAT", "uat-mydomain.com", "environmentdashboard-uat.azurewebsites.net")
-					.AddEnvironment("Prod", "mydomain.com", "environmentdashboard-prod.azurewebsites.net");
-			});
+		{
+			environments
+				.AddEnvironment("Local", "environmentdashboard.localhost")
+				.AddEnvironment("Dev", "environmentdashboard-dev.azurewebsites.net")
+				.AddEnvironment("QA", "environmentdashboard-qa.azurewebsites.net")
+				.AddEnvironment("UAT", "uat-mydomain.com", "environmentdashboard-uat.azurewebsites.net")
+				.AddEnvironment("Prod", "mydomain.com", "environmentdashboard-prod.azurewebsites.net");
+		});
 	}
 }
 ```
@@ -165,18 +165,17 @@ public class MyDemoComposer : IUserComposer
 	public void Compose(Composition composition)
 	{
 		composition.AddEnvironmentDashboard(environments =>
-				{
-					environments
-						.AddEnvironment("Local", "environmentdashboard.localhost")
-						.AddEnvironment("Dev", "environmentdashboard-dev.azurewebsites.net")
-						.AddEnvironment("QA", "environmentdashboard-qa.azurewebsites.net")
-                        .AddEnvironment("UAT", "uat-mydomain.com", "environmentdashboard-uat.azurewebsites.net")
-						.AddEnvironment("Prod", "mydomain.com", "environmentdashboard-prod.azurewebsites.net");
-				})
-				.Append<DatabaseServerFactFamilyProvider>()
-				.Append<ServerInformationFactFamilyProvider>()
-				.Append<MyExampleFactFamilyProvider>();
-			}
+		{
+			environments
+				.AddEnvironment("Local", "environmentdashboard.localhost")
+				.AddEnvironment("Dev", "environmentdashboard-dev.azurewebsites.net")
+				.AddEnvironment("QA", "environmentdashboard-qa.azurewebsites.net")
+				.AddEnvironment("UAT", "uat-mydomain.com", "environmentdashboard-uat.azurewebsites.net")
+				.AddEnvironment("Prod", "mydomain.com", "environmentdashboard-prod.azurewebsites.net");
+		})
+		.Append<DatabaseServerFactFamilyProvider>()
+		.Append<ServerInformationFactFamilyProvider>()
+		.Append<MyExampleFactFamilyProvider>();
 	}
 }
 ```
