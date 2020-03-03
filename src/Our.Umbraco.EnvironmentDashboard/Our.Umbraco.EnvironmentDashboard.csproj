@@ -44,22 +44,23 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Components\EnvironmentDashboardGroupsCollection.cs" />
-    <Compile Include="Components\EnvironmentDashboardGroupsCollectionBuilder.cs" />
-    <Compile Include="DashboardEnvironmentProvider.cs" />
-    <Compile Include="Groups\DatabaseServerGroupsProvider.cs" />
-    <Compile Include="Composing\EnvironmentDashboardComponent.cs" />
-    <Compile Include="Components\EnvironmentDashboardComposerExtensions.cs" />
-    <Compile Include="Composing\BackofficeBrowserTitleComponent.cs" />
+    <Compile Include="Composing\DomainEnvironmentBuilder.cs" />
+    <Compile Include="Composing\GroupsBuilderCollection.cs" />
+    <Compile Include="Composing\GroupsBuilderCollectionBuilder.cs" />
+    <Compile Include="Composing\IDomainEnvironmentBuilder.cs" />
+    <Compile Include="Detectors\AppSettingsEnvironmentDetector.cs" />
+    <Compile Include="Detectors\DomainEnvironmentDetector.cs" />
+    <Compile Include="Detectors\EnvironmentDetectorBase.cs" />
+    <Compile Include="Groups\DatabaseServerGroupsBuilder.cs" />
+    <Compile Include="Composing\ComposerExtensions.cs" />
+    <Compile Include="Components\BackofficeBrowserTitleComponent.cs" />
     <Compile Include="Controllers\EnvironmentDashboardController.cs" />
-    <Compile Include="DashboardEnvironment.cs" />
-    <Compile Include="Helpers\EnvironmentHelper.cs" />
-    <Compile Include="IDashboardEnvironmentProvider.cs" />
-    <Compile Include="IDashboardGroupsProvider.cs" />
-    <Compile Include="Models\DomainInfo.cs" />
-    <Compile Include="Models\EnvironmentInfo.cs" />
-    <Compile Include="Models\InfoGroup.cs" />
-    <Compile Include="Models\InfoPair.cs" />
+    <Compile Include="Groups\ServerInformationGroupsBuilder.cs" />
+    <Compile Include="IEnvironmentDetector.cs" />
+    <Compile Include="IGroupsBuilder.cs" />
+    <Compile Include="Models\Dashboard.cs" />
+    <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\KeyValuePair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

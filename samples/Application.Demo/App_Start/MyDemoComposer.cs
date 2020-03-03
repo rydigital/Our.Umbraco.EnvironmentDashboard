@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Our.Umbraco.EnvironmentDashboard;
-using Our.Umbraco.EnvironmentDashboard.Components;
-using Our.Umbraco.EnvironmentDashboard.Groups;
+﻿using Our.Umbraco.EnvironmentDashboard.Composing;
 using Umbraco.Core.Composing;
 
 namespace Application.Demo
@@ -10,17 +7,16 @@ namespace Application.Demo
 	{
 		public void Compose(Composition composition)
 		{
-			composition.AddEnvironmentDashboard(new Dictionary<DashboardEnvironment, IEnumerable<string>>
-			            {
-				            {new DashboardEnvironment("Local"), new[] {"localhost:21801"}},
-				            {new DashboardEnvironment("Development"), new[] {"environmentdashboard-dev.ry.com"}},
-				            {new DashboardEnvironment("QA"), new[] {"environmentdashboard-qa.ry.com"}},
-				            {new DashboardEnvironment("UAT"), new[] {"environmentdashboard-uat.ry.com"}},
-				            {new DashboardEnvironment("Production"), new[] {"environmentdashboard.ry.com"}},
-			            })
-			           .Append<UptimeDashboardGroupsProvider>()
-			           .Append<DatabaseServerGroupsProvider>();
-
+			composition.AddEnvironmentDashboard(environments =>
+				{
+					environments
+						.AddEnvironment("Local", "localhost:21801")
+						.AddEnvironment("Development", "environmentdashboard-dev.ry.com")
+						.AddEnvironment("QA", "environmentdashboard-qa.ry.com")
+						.AddEnvironment("UAT", "environmentdashboard-uat.ry.com");
+				})
+				.AddServerInformationGroup()
+				.AddDatabaseServerGroup();
 		}
 	}
 }

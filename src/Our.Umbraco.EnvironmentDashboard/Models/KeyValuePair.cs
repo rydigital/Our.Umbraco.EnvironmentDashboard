@@ -2,7 +2,7 @@
 
 namespace Our.Umbraco.EnvironmentDashboard.Models
 {
-    public class InfoPair
+    public class KeyValuePair
 	{
 		[JsonProperty("key")]
 		public string Key { get; set; }
@@ -10,7 +10,7 @@ namespace Our.Umbraco.EnvironmentDashboard.Models
 		[JsonProperty("value")]
 		public string Value { get; set; }
 
-		public InfoPair(string key, string value)
+		public KeyValuePair(string key, string value)
 		{
 			Key = key;
 			Value = value;

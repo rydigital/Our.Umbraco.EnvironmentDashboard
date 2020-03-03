@@ -4,14 +4,14 @@ using System.Collections.Immutable;
 using System.Linq;
 using Umbraco.Web;
 
-namespace Our.Umbraco.EnvironmentDashboard
+namespace Our.Umbraco.EnvironmentDashboard.Detectors
 {
-	public class DashboardEnvironmentProvider : IDashboardEnvironmentProvider
+	public class DomainEnvironmentDetector : EnvironmentDetectorBase
 	{
 		private readonly IHttpContextAccessor _httpContextAccessor;
-		private readonly ImmutableDictionary<DashboardEnvironment, ImmutableHashSet<string>> _environments;
+		private readonly ImmutableDictionary<string, ImmutableHashSet<string>> _environments;
 
-		public DashboardEnvironmentProvider(IHttpContextAccessor httpContextAccessor,  IDictionary<DashboardEnvironment, IEnumerable<string>> environments)
+		public DomainEnvironmentDetector(IHttpContextAccessor httpContextAccessor,  Dictionary<string, string[]> environments)
 		{
 			if (httpContextAccessor == null)
 				throw new ArgumentNullException(nameof(httpContextAccessor));
@@ -24,18 +24,15 @@ namespace Our.Umbraco.EnvironmentDashboard
 			_environments = environments.ToImmutableDictionary(kv => kv.Key, kv => kv.Value.Where(uri => uri != null).Select(uri => uri.ToLowerInvariant()).ToImmutableHashSet(StringComparer.OrdinalIgnoreCase));
 		}
 
-		public DashboardEnvironment GetEnvironment()
+		public override string Detect()
 		{
 			string urlAuthority = _httpContextAccessor.HttpContext?.Request.Url.Authority;
 
 			return GetCurrentEnvironment(urlAuthority ?? string.Empty);
 		}
 
-
-		private DashboardEnvironment GetCurrentEnvironment(string urlAuthority)
+		private string GetCurrentEnvironment(string urlAuthority)
 		{
-			DashboardEnvironment envName = DashboardEnvironment.Unknown;
-
 			var cleanedDomain = urlAuthority
 			                   .ToLowerInvariant()
 			                   .Replace("http://", string.Empty)
@@ -50,7 +47,7 @@ namespace Our.Umbraco.EnvironmentDashboard
 				}
 			}
 
-			return envName;
+			return base.Detect();
 		}
 	}
 }

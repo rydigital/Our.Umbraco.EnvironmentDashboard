@@ -3,8 +3,8 @@ using Our.Umbraco.EnvironmentDashboard.Models;
 
 namespace Our.Umbraco.EnvironmentDashboard
 {
-	public interface IDashboardGroupsProvider
+	public interface IGroupsBuilder
 	{
-		IEnumerable<InfoGroup> GetGroups(DashboardEnvironment environment);
+		IEnumerable<Group> Build(string environment);
 	}
 }

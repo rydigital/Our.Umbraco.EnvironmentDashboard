@@ -2,15 +2,15 @@
 using Umbraco.Core.Composing;
 using Umbraco.Web.JavaScript;
 
-namespace Our.Umbraco.EnvironmentDashboard.Composing
+namespace Our.Umbraco.EnvironmentDashboard.Components
 {
 	public class BackofficeBrowserTitleComponent : IComponent
 	{
-		private readonly IDashboardEnvironmentProvider _dashboardEnvironmentProvider;
+		private readonly IEnvironmentDetector _environmentDetector;
 
-		public BackofficeBrowserTitleComponent(IDashboardEnvironmentProvider dashboardEnvironmentProvider)
+		public BackofficeBrowserTitleComponent(IEnvironmentDetector environmentDetector)
 		{
-			_dashboardEnvironmentProvider = dashboardEnvironmentProvider;
+			this._environmentDetector = environmentDetector;
 		}
 
 		public void Initialize()
@@ -21,11 +21,11 @@ namespace Our.Umbraco.EnvironmentDashboard.Composing
 				//which will show in the browser tab
 				//eg "(Local) Content - website.local"
 
-				var environment = _dashboardEnvironmentProvider.GetEnvironment();
+				var environment = this._environmentDetector.Detect();
 
 				objects.Add("deploy", new Dictionary<string, object>
 				{
-					{ "CurrentWorkspace",  environment.Name }
+					{ "CurrentWorkspace",  environment }
 				});
 			};
 		}
