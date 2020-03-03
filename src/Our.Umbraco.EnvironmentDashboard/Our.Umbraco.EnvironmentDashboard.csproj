@@ -44,23 +44,21 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Composing\DomainEnvironmentBuilder.cs" />
-    <Compile Include="Composing\GroupsBuilderCollection.cs" />
-    <Compile Include="Composing\GroupsBuilderCollectionBuilder.cs" />
-    <Compile Include="Composing\IDomainEnvironmentBuilder.cs" />
-    <Compile Include="Detectors\AppSettingsEnvironmentDetector.cs" />
-    <Compile Include="Detectors\DomainEnvironmentDetector.cs" />
-    <Compile Include="Detectors\EnvironmentDetectorBase.cs" />
-    <Compile Include="Groups\DatabaseServerGroupsBuilder.cs" />
-    <Compile Include="Composing\ComposerExtensions.cs" />
-    <Compile Include="Components\BackofficeBrowserTitleComponent.cs" />
-    <Compile Include="Controllers\EnvironmentDashboardController.cs" />
-    <Compile Include="Groups\ServerInformationGroupsBuilder.cs" />
-    <Compile Include="IEnvironmentDetector.cs" />
-    <Compile Include="IGroupsBuilder.cs" />
-    <Compile Include="Models\Dashboard.cs" />
-    <Compile Include="Models\Group.cs" />
-    <Compile Include="Models\KeyValuePair.cs" />
+    <Compile Include="Core\EnvironmentContainer.cs" />
+    <Compile Include="Core\Composing\FactFamilyProviderCollection.cs" />
+    <Compile Include="Core\Detectors\AppSettingEnvironmentDetector.cs" />
+    <Compile Include="Core\Detectors\DomainEnvironmentDetector.cs" />
+    <Compile Include="Core\Detectors\EnvironmentDetectorBase.cs" />
+    <Compile Include="Core\CompositionExtensions.cs" />
+    <Compile Include="Core\Components\BackofficeBrowserTitleComponent.cs" />
+    <Compile Include="Core\Controllers\Api\EnvironmentDashboardController.cs" />
+    <Compile Include="Core\Detectors\IEnvironmentDetector.cs" />
+    <Compile Include="Core\Providers\DatabaseServerFactFamilyProvider.cs" />
+    <Compile Include="Core\Providers\ServerInformationFactFamilyProvider.cs" />
+    <Compile Include="Core\Providers\IFactFamilyProvider.cs" />
+    <Compile Include="Core\Models\Dashboard.cs" />
+    <Compile Include="Core\Models\FactFamily.cs" />
+    <Compile Include="Core\Models\Fact.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

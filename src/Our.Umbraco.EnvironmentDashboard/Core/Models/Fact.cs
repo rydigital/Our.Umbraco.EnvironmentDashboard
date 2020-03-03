@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace Our.Umbraco.EnvironmentDashboard.Models
+namespace Our.Umbraco.EnvironmentDashboard.Core.Models
 {
-    public class KeyValuePair
+    public class Fact
 	{
 		[JsonProperty("key")]
 		public string Key { get; set; }
@@ -10,7 +10,7 @@ namespace Our.Umbraco.EnvironmentDashboard.Models
 		[JsonProperty("value")]
 		public string Value { get; set; }
 
-		public KeyValuePair(string key, string value)
+		public Fact(string key, string value)
 		{
 			Key = key;
 			Value = value;

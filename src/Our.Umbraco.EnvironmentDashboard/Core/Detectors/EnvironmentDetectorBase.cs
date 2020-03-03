@@ -1,4 +1,4 @@
-﻿namespace Our.Umbraco.EnvironmentDashboard.Detectors
+﻿namespace Our.Umbraco.EnvironmentDashboard.Core.Detectors
 {
 	public abstract class EnvironmentDetectorBase : IEnvironmentDetector
 	{

@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{651D60BD-4
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D8D5C60B-34BA-4CA1-8DC8-65334E062148}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Our.Umbraco.EnvironmentDashboard.Test", "Our.Umbraco.EnvironmentDashboard.Contrib.Test\Our.Umbraco.EnvironmentDashboard.Test.csproj", "{788EF2BB-3C21-4C0F-8DDC-964BD22B2A92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,9 +40,20 @@ Global
 		{7A6ED7B0-DBBB-40C1-A97B-06494315ED5A}.Release-net45|Any CPU.Build.0 = Release|Any CPU
 		{7A6ED7B0-DBBB-40C1-A97B-06494315ED5A}.Release-net452|Any CPU.ActiveCfg = Release|Any CPU
 		{7A6ED7B0-DBBB-40C1-A97B-06494315ED5A}.Release-net452|Any CPU.Build.0 = Release|Any CPU
+		{788EF2BB-3C21-4C0F-8DDC-964BD22B2A92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{788EF2BB-3C21-4C0F-8DDC-964BD22B2A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{788EF2BB-3C21-4C0F-8DDC-964BD22B2A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{788EF2BB-3C21-4C0F-8DDC-964BD22B2A92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{788EF2BB-3C21-4C0F-8DDC-964BD22B2A92}.Release-net45|Any CPU.ActiveCfg = Release|Any CPU
+		{788EF2BB-3C21-4C0F-8DDC-964BD22B2A92}.Release-net45|Any CPU.Build.0 = Release|Any CPU
+		{788EF2BB-3C21-4C0F-8DDC-964BD22B2A92}.Release-net452|Any CPU.ActiveCfg = Release|Any CPU
+		{788EF2BB-3C21-4C0F-8DDC-964BD22B2A92}.Release-net452|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{788EF2BB-3C21-4C0F-8DDC-964BD22B2A92} = {D8D5C60B-34BA-4CA1-8DC8-65334E062148}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C940E746-9851-442D-BC6C-5AAC62086373}

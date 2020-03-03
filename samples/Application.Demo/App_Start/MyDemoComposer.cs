@@ -1,4 +1,8 @@
-﻿using Our.Umbraco.EnvironmentDashboard.Composing;
+﻿using Application.Demo.App_Start;
+using Our.Umbraco.EnvironmentDashboard.Core;
+using Our.Umbraco.EnvironmentDashboard.Core.Detectors;
+using Our.Umbraco.EnvironmentDashboard.Core.Providers;
+using System.Configuration;
 using Umbraco.Core.Composing;
 
 namespace Application.Demo
@@ -7,16 +11,30 @@ namespace Application.Demo
 	{
 		public void Compose(Composition composition)
 		{
-			composition.AddEnvironmentDashboard(environments =>
-				{
-					environments
-						.AddEnvironment("Local", "localhost:21801")
-						.AddEnvironment("Development", "environmentdashboard-dev.ry.com")
-						.AddEnvironment("QA", "environmentdashboard-qa.ry.com")
-						.AddEnvironment("UAT", "environmentdashboard-uat.ry.com");
-				})
-				.AddServerInformationGroup()
-				.AddDatabaseServerGroup();
+			string environmentFromConfig = ConfigurationManager.AppSettings["EnvironmentDashboard"];
+			if (!string.IsNullOrWhiteSpace(environmentFromConfig))
+			{
+				// Environment can be set via the AppSetting "EnvironmentDashboard"
+				composition.AddEnvironmentDashboard(new AppSettingEnvironmentDetector())
+					.Append<ServerInformationFactFamilyProvider>()
+					.Append<DatabaseServerFactFamilyProvider>();
+			}
+			else
+			{
+				// When the AppSetting "EnvironmentDashboard" does not exist, then domains are required for registration
+				composition.AddEnvironmentDashboard(environments =>
+					{
+						environments
+							.AddEnvironment("Local", "environmentdashboard.localhost")
+							.AddEnvironment("Dev", "environmentdashboard-dev.azurewebsites.net")
+							.AddEnvironment("QA", "environmentdashboard-qa.azurewebsites.net")
+							.AddEnvironment("UAT", "uat-mydomain.com", "environmentdashboard-uat.azurewebsites.net")
+							.AddEnvironment("Prod", "mydomain.com", "environmentdashboard-prod.azurewebsites.net");
+					})
+					.Append<DatabaseServerFactFamilyProvider>()
+					.Append<ServerInformationFactFamilyProvider>()
+					.Append<MyExampleFactFamilyProvider>();
+			}
 		}
 	}
 }

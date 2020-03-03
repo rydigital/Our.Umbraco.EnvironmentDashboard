@@ -1,4 +1,4 @@
-﻿namespace Our.Umbraco.EnvironmentDashboard
+﻿namespace Our.Umbraco.EnvironmentDashboard.Core.Detectors
 {
 	public interface IEnvironmentDetector
 	{

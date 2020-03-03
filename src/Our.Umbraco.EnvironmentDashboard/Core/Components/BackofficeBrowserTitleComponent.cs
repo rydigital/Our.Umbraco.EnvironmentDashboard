@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Our.Umbraco.EnvironmentDashboard.Core.Detectors;
+using System.Collections.Generic;
 using Umbraco.Core.Composing;
 using Umbraco.Web.JavaScript;
 
-namespace Our.Umbraco.EnvironmentDashboard.Components
+namespace Our.Umbraco.EnvironmentDashboard.Core.Components
 {
 	public class BackofficeBrowserTitleComponent : IComponent
 	{
@@ -10,7 +11,7 @@ namespace Our.Umbraco.EnvironmentDashboard.Components
 
 		public BackofficeBrowserTitleComponent(IEnvironmentDetector environmentDetector)
 		{
-			this._environmentDetector = environmentDetector;
+			_environmentDetector = environmentDetector;
 		}
 
 		public void Initialize()
